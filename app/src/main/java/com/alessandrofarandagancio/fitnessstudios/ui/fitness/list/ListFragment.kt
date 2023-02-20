@@ -1,4 +1,4 @@
-package com.alessandrofarandagancio.fitnessstudios.ui.list
+package com.alessandrofarandagancio.fitnessstudios.ui.fitness.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.alessandrofarandagancio.fitnessstudios.databinding.FragmentListBinding
+import com.alessandrofarandagancio.fitnessstudios.models.Business
+import com.alessandrofarandagancio.fitnessstudios.ui.fitness.FitnessViewModel
+import com.alessandrofarandagancio.fitnessstudios.ui.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ListFragment : Fragment() {
+
+    private val fitnessViewModel: FitnessViewModel by activityViewModels()
 
     private var _binding: FragmentListBinding? = null
 
@@ -24,17 +33,23 @@ class ListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        var businessAdapter = BusinessItemAdapter { business -> adapterOnClick(business) }
+        binding.recyclerView.adapter = businessAdapter
+
+        fitnessViewModel.businessResponse.observe(viewLifecycleOwner, Observer {
+            if(it.status == Status.SUCCESS){
+                businessAdapter.submitList(it.data!!.businesses)
+            }
+        })
+
         return root
+    }
+
+    private fun adapterOnClick(business: Business) {
     }
 
     override fun onDestroyView() {
