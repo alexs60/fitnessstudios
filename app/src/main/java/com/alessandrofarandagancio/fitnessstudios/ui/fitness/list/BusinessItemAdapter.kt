@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.alessandrofarandagancio.fitnessstudios.R
-import com.alessandrofarandagancio.fitnessstudios.models.Business
+import com.alessandrofarandagancio.fitnessstudios.models.yelp.Business
 
 class BusinessItemAdapter(private val onClick: (Business) -> Unit) :
     ListAdapter<Business, BusinessItemAdapter.BusinessViewHolder>(SchoolDiffCallback) {
@@ -17,18 +17,16 @@ class BusinessItemAdapter(private val onClick: (Business) -> Unit) :
         RecyclerView.ViewHolder(view) {
         private val textViewName: TextView = view.findViewById(R.id.name)
         private val textViewAddress: TextView = view.findViewById(R.id.address)
-        private var currentSchool: Business? = null
+        private lateinit var currentBusiness: Business
 
         init {
             view.setOnClickListener {
-                currentSchool?.let {
-                    onClick(it)
-                }
+                onClick(currentBusiness)
             }
         }
 
         fun bind(business: Business) {
-            currentSchool = business
+            currentBusiness = business
             textViewName.text = business.name
             textViewAddress.text = business.location.displayAddress.joinToString()
         }

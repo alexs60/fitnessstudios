@@ -1,16 +1,16 @@
 package com.alessandrofarandagancio.fitnessstudios.repository
 
-import com.alessandrofarandagancio.fitnessstudios.api.ApiHelper
+import com.alessandrofarandagancio.fitnessstudios.api.yelp.ApiHelper
 import com.alessandrofarandagancio.fitnessstudios.constant.categoryList
 import com.alessandrofarandagancio.fitnessstudios.constant.resultLimit
 import com.alessandrofarandagancio.fitnessstudios.constant.searchRadius
 import com.alessandrofarandagancio.fitnessstudios.constant.sortRule
-import com.alessandrofarandagancio.fitnessstudios.models.SearchBusinessResponse
+import com.alessandrofarandagancio.fitnessstudios.models.yelp.SearchBusinessResponse
 import retrofit2.Call
 import javax.inject.Inject
 
 
-class MainRepository @Inject constructor(
+class BusinessesRepository @Inject constructor(
     private val apiHelper: ApiHelper
 ) {
 

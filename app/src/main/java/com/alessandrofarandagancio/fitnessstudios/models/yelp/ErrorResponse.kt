@@ -1,4 +1,4 @@
-package com.alessandrofarandagancio.fitnessstudios.models
+package com.alessandrofarandagancio.fitnessstudios.models.yelp
 
 import com.google.gson.annotations.SerializedName
 

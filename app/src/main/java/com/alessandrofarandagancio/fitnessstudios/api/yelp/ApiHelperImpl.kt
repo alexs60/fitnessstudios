@@ -1,17 +1,10 @@
-package com.alessandrofarandagancio.fitnessstudios.api
+package com.alessandrofarandagancio.fitnessstudios.api.yelp
 
-import com.alessandrofarandagancio.fitnessstudios.constant.baseYelpRestApiUrl
-import com.alessandrofarandagancio.fitnessstudios.models.SearchBusinessResponse
+import com.alessandrofarandagancio.fitnessstudios.models.yelp.SearchBusinessResponse
 import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 class ApiHelperImpl @Inject constructor(private val apiService: ApiService) : ApiHelper {
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(baseYelpRestApiUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
 
     override fun getBusinesses(
         latitude: String?,

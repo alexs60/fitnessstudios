@@ -1,4 +1,4 @@
-package com.alessandrofarandagancio.fitnessstudios.models
+package com.alessandrofarandagancio.fitnessstudios.models.yelp
 
 import com.google.gson.annotations.SerializedName
 
@@ -6,8 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class Center(
 
     @SerializedName("longitude")
-    var longitude: Double? = null,
+    var longitude: Double = 0.0,
     @SerializedName("latitude")
-    var latitude: Double? = null
+    var latitude: Double = 0.0
 
 )

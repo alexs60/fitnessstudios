@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import com.alessandrofarandagancio.fitnessstudios.R
 import com.alessandrofarandagancio.fitnessstudios.databinding.FragmentListBinding
-import com.alessandrofarandagancio.fitnessstudios.models.Business
+import com.alessandrofarandagancio.fitnessstudios.models.yelp.Business
 import com.alessandrofarandagancio.fitnessstudios.ui.fitness.FitnessViewModel
 import com.alessandrofarandagancio.fitnessstudios.ui.utils.Status
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ListFragment : Fragment() {
@@ -41,15 +39,24 @@ class ListFragment : Fragment() {
         binding.recyclerView.adapter = businessAdapter
 
         fitnessViewModel.businessResponse.observe(viewLifecycleOwner, Observer {
-            if(it.status == Status.SUCCESS){
-                businessAdapter.submitList(it.data!!.businesses)
+            if (it.status == Status.SUCCESS) {
+                businessAdapter.submitList(it.data.businesses)
             }
         })
 
         return root
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     private fun adapterOnClick(business: Business) {
+        if (business.coordinates == null) {
+            Snackbar.make(binding.root, R.string.no_coords, Snackbar.LENGTH_SHORT)
+            return
+        }
+        fitnessViewModel.goToDetails(this, R.id.action_ListFragment_to_DetailsFragment, business);
     }
 
     override fun onDestroyView() {

@@ -1,7 +1,7 @@
-package com.alessandrofarandagancio.fitnessstudios.api
+package com.alessandrofarandagancio.fitnessstudios.api.yelp
 
 import com.alessandrofarandagancio.fitnessstudios.constant.yelpAPIKey
-import com.alessandrofarandagancio.fitnessstudios.models.SearchBusinessResponse
+import com.alessandrofarandagancio.fitnessstudios.models.yelp.SearchBusinessResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -20,4 +20,6 @@ interface ApiService {
         @Query("sort_by") sortBy: String,
         @Query("limit") limit: String
     ): Call<SearchBusinessResponse>
+
+
 }

@@ -1,6 +1,6 @@
-package com.alessandrofarandagancio.fitnessstudios.api
+package com.alessandrofarandagancio.fitnessstudios.api.yelp
 
-import com.alessandrofarandagancio.fitnessstudios.models.SearchBusinessResponse
+import com.alessandrofarandagancio.fitnessstudios.models.yelp.SearchBusinessResponse
 import retrofit2.Call
 
 interface ApiHelper {
