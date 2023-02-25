@@ -3,18 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_list">
+    app:startDestination="@id/ListFragment">
 
     <fragment
-        android:id="@+id/navigation_list"
-        android:name="com.alessandrofarandagancio.fitnessstudios.ui.list.ListFragment"
+        android:id="@+id/ListFragment"
+        android:name="com.alessandrofarandagancio.fitnessstudios.ui.fitness.list.ListFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_ListFragment_to_DetailsFragment"
+            app:destination="@id/DetailFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_map"
-        android:name="com.alessandrofarandagancio.fitnessstudios.ui.map.MapFragment"
+        android:id="@+id/MapFragment"
+        android:name="com.alessandrofarandagancio.fitnessstudios.ui.fitness.map.MapFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/action_MapFragment_to_DetailsFragment"
+            app:destination="@id/DetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DetailFragment"
+        android:name="com.alessandrofarandagancio.fitnessstudios.ui.fitnessdetail.DetailFragment"
+        android:label="@string/details"
+        tools:layout="@layout/fragment_detail">
+
+        <action
+            android:id="@+id/action_DetailsFragment_to_MapFragment"
+            app:destination="@id/MapFragment" />
+
+        <action
+            android:id="@+id/action_DetailsFragment_to_ListFragment"
+            app:destination="@id/ListFragment" />
+
+    </fragment>
+
 
 </navigation>

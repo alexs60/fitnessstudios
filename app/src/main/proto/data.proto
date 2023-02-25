@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "com.alessandrofarandagancio.fitnessstudios";
+option java_multiple_files = true;
+
+message Settings {
+  int32 lastUpdate = 1;
+  Page lastPage = 2;
+}
+
+enum Page {
+  MAP = 0;
+  LIST = 1;
+}
