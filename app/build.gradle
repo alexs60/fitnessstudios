@@ -75,11 +75,6 @@ dependencies {
     //Map
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
-    // Room
-    implementation "androidx.room:room-runtime:2.5.0"
-    kapt "androidx.room:room-compiler:2.5.0"
-    implementation "androidx.room:room-ktx:2.5.0"
-
     //Preference DataStore Proto
     implementation "androidx.datastore:datastore-preferences:1.1.0-alpha01"
     implementation 'androidx.datastore:datastore-core-android:1.1.0-alpha01'
@@ -88,7 +83,6 @@ dependencies {
 
     //Image Coil
     implementation "io.coil-kt:coil:1.1.1"
-
 
     implementation "com.google.maps.android:android-maps-utils:3.4.0"
 
