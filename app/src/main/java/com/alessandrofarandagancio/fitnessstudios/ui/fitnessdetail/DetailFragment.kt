@@ -1,4 +1,4 @@
-package com.alessandrofarandagancio.fitnessstudios.ui.fitness.map
+package com.alessandrofarandagancio.fitnessstudios.ui.fitnessdetail
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -19,7 +19,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.JointType
-import com.google.android.gms.maps.model.Polygon
 import com.google.android.gms.maps.model.PolygonOptions
 import com.google.maps.android.PolyUtil
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,7 +43,6 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
     ): View {
 
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
-
 
         val root: View = binding.root
 

@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/DetailFragment"
-        android:name="com.alessandrofarandagancio.fitnessstudios.ui.fitness.map.DetailFragment"
+        android:name="com.alessandrofarandagancio.fitnessstudios.ui.fitnessdetail.DetailFragment"
         android:label="@string/details"
         tools:layout="@layout/fragment_detail">
 
